@@ -38,9 +38,17 @@
     <!-- Barra de Navegação -->
     <header class="header" id="siteHeader">
         <div class="container nav-container">
-            <a href="#" class="logo" aria-label="Página inicial">
-                Daiane<span>Ribeiro</span>
-            </a>
+            <div class="logo-skin-wrapper">
+                <a href="#" class="logo" aria-label="Página inicial">
+                    Daiane<span>Ribeiro</span>
+                </a>
+                <!-- Alternador de Skins Visuais -->
+                <div class="skin-selector" id="skinSelector" aria-label="Escolher visual da página">
+                    <button class="skin-btn active" data-skin="dark" title="Skin Sleek Dark"><i class="fa-solid fa-moon"></i></button>
+                    <button class="skin-btn" data-skin="light" title="Skin Elegant Light"><i class="fa-solid fa-sun"></i></button>
+                    <button class="skin-btn" data-skin="pink" title="Skin MaryKay Pink"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+                </div>
+            </div>
             <button class="mobile-nav-toggle" aria-label="Abrir menu" aria-expanded="false" id="navToggle">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -204,6 +212,85 @@
                         <h4>Aceleração Comportamental de Vendas</h4>
                         <p>A aplicação prática do DISC na jornada de compra do cliente transforma a arte de vender em ciência com resultados mensuráveis.</p>
                         <div class="highlight-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Área do Assinante (E-book & LGPD) -->
+        <section id="assinante" class="subscriber-section">
+            <div class="container subscriber-container">
+                <div class="subscriber-info" data-reveal="left">
+                    <span class="section-subtitle">Conteúdo Exclusivo Gratuito</span>
+                    <h2>Área do <span class="text-gradient">Assinante</span></h2>
+                    <p>Faça seu cadastro rápido e receba imediatamente em seu e-mail o e-book **"Segredos da Autoestima e Performance Corporativa"** escrito pela especialista Daiane Ribeiro.</p>
+                    
+                    <div class="subscriber-benefits-list">
+                        <div class="benefit-item">
+                            <i class="fa-solid fa-book-open"></i>
+                            <span>Dicas práticas de controle de Burnout e Procrastinação</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Acesso a materiais e convites de palestras exclusivas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subscriber-form-box" data-reveal="right">
+                    <div id="subscriberRegisterFormBox">
+                        <h3>Baixe seu E-book Grátis</h3>
+                        <form id="subscriberForm" onsubmit="event.preventDefault(); registerSubscriber();">
+                            <div class="form-group">
+                                <label for="subName">Seu Nome *</label>
+                                <input type="text" id="subName" required placeholder="Nome completo" autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="subEmail">Seu Melhor E-mail *</label>
+                                <input type="email" id="subEmail" required placeholder="email@exemplo.com" autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="subPhone">WhatsApp / Telefone *</label>
+                                <input type="tel" id="subPhone" required placeholder="(11) 99999-9999" autocomplete="tel">
+                            </div>
+                            
+                            <!-- Termo LGPD -->
+                            <div class="lgpd-checkbox-group">
+                                <input type="checkbox" id="subLgpdAccept" required>
+                                <label for="subLgpdAccept">
+                                    Aceito os <a href="#lgpdModalOpen" onclick="openLgpdModal(event)">Termos de Privacidade</a> e autorizo o processamento dos meus dados nos termos da LGPD para fins de envio do e-book e novidades.
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <span>Garantir meu E-book</span>
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Estado Logado / Downloads e Gestão de Dados -->
+                    <div id="subscriberActiveBox" style="display: none;">
+                        <div class="subscriber-welcome-header">
+                            <div class="sub-avatar-icon">🌸</div>
+                            <div>
+                                <h3 id="subscriberWelcomeName">Olá, Assinante!</h3>
+                                <p>Seu acesso está ativo e em conformidade com a LGPD.</p>
+                            </div>
+                        </div>
+
+                        <div class="subscriber-actions-block">
+                            <a href="#" class="btn btn-primary btn-full" onclick="event.preventDefault(); alert('Download do E-book iniciado com sucesso!');">
+                                <i class="fa-solid fa-file-pdf"></i> Baixar E-book (PDF)
+                            </a>
+                            
+                            <div class="lgpd-management-box">
+                                <h4>Controle seus Dados (LGPD)</h4>
+                                <p>Você tem total controle sobre suas informações pessoais armazenadas no nosso banco de dados.</p>
+                                <button class="btn btn-outline btn-full btn-danger" onclick="deleteSubscriberData()">
+                                    <i class="fa-solid fa-trash-can"></i> Excluir meus Dados Permanentemente
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -651,6 +738,109 @@
                     </div>
                 </div>
 
+                <!-- Seção de Agentes Treinadas (Gestão e Mural) -->
+        <section id="agentes" class="agents-section">
+            <div class="container">
+                <div class="section-header" data-reveal="up">
+                    <span class="section-subtitle">Profissionais Formadas e Credenciadas</span>
+                    <h2>Agentes de Vendas <span class="text-gradient">Treinadas</span></h2>
+                    <p>Encontre aqui as agentes treinadas pessoalmente pela Daiane Ribeiro qualificadas para impulsionar sua equipe comercial.</p>
+                </div>
+
+                <!-- Painel Administrativo de Gestão (Login e CRUD para Daiane Ribeiro) -->
+                <div class="admin-agents-panel" data-reveal="up">
+                    <div class="admin-panel-header">
+                        <h4><i class="fa-solid fa-lock-open text-gradient"></i> Console Administrativo Daiane Ribeiro</h4>
+                        <span class="panel-badge-admin">Restrito</span>
+                    </div>
+
+                    <!-- Formulário de Login Administrativo -->
+                    <div id="adminLoginFormBox" class="admin-login-box">
+                        <p>Acesse com seu login administrativo para gerenciar, cadastrar e ativar novas agentes credenciadas.</p>
+                        <form id="adminLoginForm" onsubmit="event.preventDefault(); handleAdminLogin();" class="admin-login-inline-form">
+                            <div class="form-group-inline">
+                                <input type="text" id="adminUsername" placeholder="Usuário Admin (daiane)" required>
+                            </div>
+                            <div class="form-group-inline">
+                                <input type="password" id="adminPassword" placeholder="Senha (1234)" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Entrar <i class="fa-solid fa-right-to-bracket"></i></button>
+                        </form>
+                        <span id="adminLoginError" class="error-message-inline">Credenciais inválidas. Tente daiane / 1234.</span>
+                    </div>
+
+                    <!-- Lousa de Gerenciamento de Agentes (Apenas Visível após login) -->
+                    <div id="adminDashboardBox" style="display: none;" class="admin-dashboard-box">
+                        <div class="admin-welcome-bar">
+                            <span>Bem-vinda, <strong>Daiane Ribeiro</strong>!</span>
+                            <button class="btn btn-secondary btn-sm" onclick="handleAdminLogout()">Sair <i class="fa-solid fa-right-from-bracket"></i></button>
+                        </div>
+
+                        <!-- Formulário de Cadastro de Agente -->
+                        <form id="addAgentForm" onsubmit="event.preventDefault(); registerAgent();" class="add-agent-form">
+                            <h5>Cadastrar Nova Agente Validada</h5>
+                            <div class="form-grid-admin">
+                                <div class="form-group">
+                                    <label for="agentName">Nome da Agente *</label>
+                                    <input type="text" id="agentName" required placeholder="Ex: Juliana Santos">
+                                </div>
+                                <div class="form-group">
+                                    <label for="agentCourse">Curso Concluído *</label>
+                                    <input type="text" id="agentCourse" required placeholder="Ex: Formação em Vendas e Perfil DISC">
+                                </div>
+                                <div class="form-group">
+                                    <label for="agentDate">Data da Formação *</label>
+                                    <input type="date" id="agentDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="agentPhone">WhatsApp de Contato *</label>
+                                    <input type="tel" id="agentPhone" required placeholder="(11) 99999-8888">
+                                </div>
+                                <div class="form-group">
+                                    <label for="agentEmail">E-mail de Contato *</label>
+                                    <input type="email" id="agentEmail" required placeholder="juliana@exemplo.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="agentPhoto">URL da Foto (Opcional)</label>
+                                    <input type="text" id="agentPhoto" placeholder="Link da foto (ou deixar em branco)">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Cadastrar e Certificar Agente <i class="fa-solid fa-certificate"></i></button>
+                        </form>
+
+                        <!-- Tabela de Controle de Agentes -->
+                        <div class="admin-agents-table-wrapper">
+                            <h5>Agentes sob Gestão</h5>
+                            <table class="admin-agents-table">
+                                <thead>
+                                    <tr>
+                                        <th>Agente</th>
+                                        <th>Curso / Formação</th>
+                                        <th>Contato</th>
+                                        <th>Status / Validação</th>
+                                        <th>Ações de Controle</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminAgentsTableBody">
+                                    <!-- Conteúdo populado via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mural Público de Agentes Treinadas (Exposição) -->
+                <div class="agents-mural-wrapper">
+                    <h4>Mural de Profissionais Credenciadas</h4>
+                    <p class="mural-intro">Estas profissionais completaram com êxito as capacitações e estão aptas a atuar na implantação do método DISC e autoimagem em vendas.</p>
+                    
+                    <div class="agents-mural-grid" id="publicAgentsMural">
+                        <!-- Cards gerados dinamicamente via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
                 <!-- PAINEL INTERATIVO DE HOMOLOGAÇÃO (Validação da Cliente Daiane Ribeiro) -->
                 <div class="homologacao-panel" id="homologacaoPanel" data-reveal="up">
                     <div class="homologacao-header">
@@ -705,6 +895,33 @@
                                         <button class="btn-reject" onclick="homologarItem('perfis-acesso', false)"><i class="fa-solid fa-xmark"></i> Reprovar</button>
                                     </td>
                                 </tr>
+                                <tr data-item-id="skins-visuais">
+                                    <td><strong>5. Skins Visuais (Dark, Light, Pink)</strong></td>
+                                    <td>Clique nos botões de tema no topo (sol, lua e varinha) e certifique-se de que a skin visual é aplicada em toda a página.</td>
+                                    <td><span class="status-badge status-pending" id="status-skins-visuais">Pendente</span></td>
+                                    <td class="action-buttons-cell">
+                                        <button class="btn-approve" onclick="homologarItem('skins-visuais', true)"><i class="fa-solid fa-check"></i> Aprovar</button>
+                                        <button class="btn-reject" onclick="homologarItem('skins-visuais', false)"><i class="fa-solid fa-xmark"></i> Reprovar</button>
+                                    </td>
+                                </tr>
+                                <tr data-item-id="lgpd-subscriber">
+                                    <td><strong>6. Área do Assinante & LGPD</strong></td>
+                                    <td>Cadastre-se para baixar o e-book, aceite a LGPD e teste a exclusão definitiva imediata dos dados coletados.</td>
+                                    <td><span class="status-badge status-pending" id="status-lgpd-subscriber">Pendente</span></td>
+                                    <td class="action-buttons-cell">
+                                        <button class="btn-approve" onclick="homologarItem('lgpd-subscriber', true)"><i class="fa-solid fa-check"></i> Aprovar</button>
+                                        <button class="btn-reject" onclick="homologarItem('lgpd-subscriber', false)"><i class="fa-solid fa-xmark"></i> Reprovar</button>
+                                    </td>
+                                </tr>
+                                <tr data-item-id="gestao-agentes">
+                                    <td><strong>7. Gestão de Agentes Treinadas</strong></td>
+                                    <td>Faça login como admin (daiane / 1234), cadastre uma agente, altere sua validação/status e verifique o mural público.</td>
+                                    <td><span class="status-badge status-pending" id="status-gestao-agentes">Pendente</span></td>
+                                    <td class="action-buttons-cell">
+                                        <button class="btn-approve" onclick="homologarItem('gestao-agentes', true)"><i class="fa-solid fa-check"></i> Aprovar</button>
+                                        <button class="btn-reject" onclick="homologarItem('gestao-agentes', false)"><i class="fa-solid fa-xmark"></i> Reprovar</button>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -714,7 +931,7 @@
                             <div class="progresso-bar-fill" id="homologacaoProgressFill" style="width: 0%"></div>
                         </div>
                         <div class="homologacao-summary-text">
-                            Aprovação do Projeto: <span id="homologacaoApprovedCount">0</span> de 4 itens homologados.
+                            Aprovação do Projeto: <span id="homologacaoApprovedCount">0</span> de 7 itens homologados.
                         </div>
                     </div>
                 </div>
@@ -942,7 +1159,7 @@
                 </div>
                 <div class="footer-contact-item">
                     <i class="fa-solid fa-envelope"></i>
-                    <span>contato@daianeriveiro.com.br</span>
+                    <span>contato@daianeribeiro.com.br</span>
                 </div>
             </div>
         </div>

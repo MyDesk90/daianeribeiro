@@ -898,3 +898,308 @@ window.homologarItem = function(itemId, isApproved) {
     }
 }
 
+// ================================================================
+// Lógicas de Skins, LGPD e Agentes (Daiane Ribeiro)
+// ================================================================
+
+// 1. Alternador de Skins Visuais (Dark, Light, Pink)
+const skinSelector = document.getElementById('skinSelector');
+if (skinSelector) {
+    const skinButtons = skinSelector.querySelectorAll('.skin-btn');
+    
+    // Recuperar skin anterior do localStorage
+    const savedSkin = localStorage.getItem('daiane-skin') || 'dark';
+    applySkin(savedSkin);
+
+    skinButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const skinName = btn.getAttribute('data-skin');
+            applySkin(skinName);
+            localStorage.setItem('daiane-skin', skinName);
+        });
+    });
+
+    function applySkin(skinName) {
+        // Remover classes de skins anteriores
+        document.body.classList.remove('skin-light', 'skin-pink');
+        skinButtons.forEach(btn => btn.classList.remove('active'));
+
+        if (skinName !== 'dark') {
+            document.body.classList.add(`skin-${skinName}`);
+        }
+
+        const activeBtn = skinSelector.querySelector(`.skin-btn[data-skin="${skinName}"]`);
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+}
+
+// 2. Termo de Aceite LGPD Modal
+const lgpdModal = document.getElementById('lgpdModal');
+window.openLgpdModal = function(e) {
+    if (e) e.preventDefault();
+    if (lgpdModal) lgpdModal.classList.add('active');
+}
+window.closeLgpdModal = function() {
+    if (lgpdModal) lgpdModal.classList.remove('active');
+}
+
+// 3. Área de Assinantes & Download de E-book (LGPD)
+const subscriberForm = document.getElementById('subscriberForm');
+const subscriberRegisterFormBox = document.getElementById('subscriberRegisterFormBox');
+const subscriberActiveBox = document.getElementById('subscriberActiveBox');
+const subscriberWelcomeName = document.getElementById('subscriberWelcomeName');
+
+// Simular banco de dados de assinantes no LocalStorage
+let currentSubscriber = JSON.parse(localStorage.getItem('daiane-subscriber') || 'null');
+
+function updateSubscriberUI() {
+    if (currentSubscriber) {
+        if (subscriberRegisterFormBox) subscriberRegisterFormBox.style.display = 'none';
+        if (subscriberActiveBox) subscriberActiveBox.style.display = 'block';
+        if (subscriberWelcomeName) subscriberWelcomeName.textContent = `Olá, ${currentSubscriber.name}!`;
+    } else {
+        if (subscriberRegisterFormBox) subscriberRegisterFormBox.style.display = 'block';
+        if (subscriberActiveBox) subscriberActiveBox.style.display = 'none';
+        
+        // Limpar inputs
+        const subName = document.getElementById('subName');
+        const subEmail = document.getElementById('subEmail');
+        const subPhone = document.getElementById('subPhone');
+        const subLgpdAccept = document.getElementById('subLgpdAccept');
+        
+        if (subName) subName.value = '';
+        if (subEmail) subEmail.value = '';
+        if (subPhone) subPhone.value = '';
+        if (subLgpdAccept) subLgpdAccept.checked = false;
+    }
+}
+
+window.registerSubscriber = function() {
+    const name = document.getElementById('subName').value.trim();
+    const email = document.getElementById('subEmail').value.trim();
+    const phone = document.getElementById('subPhone').value.trim();
+    const accept = document.getElementById('subLgpdAccept').checked;
+
+    if (!accept) {
+        alert("Você deve aceitar as regras da LGPD para prosseguir.");
+        return;
+    }
+
+    currentSubscriber = { name, email, phone };
+    localStorage.setItem('daiane-subscriber', JSON.stringify(currentSubscriber));
+    updateSubscriberUI();
+    alert("Inscrição efetuada com sucesso! O e-book foi enviado por e-mail e o download está liberado.");
+}
+
+window.deleteSubscriberData = function() {
+    if (confirm("LGPD - Direito ao Esquecimento: Tem certeza que deseja excluir todos os seus dados pessoais de nossa base? Esta ação é definitiva e removerá seu acesso.")) {
+        localStorage.removeItem('daiane-subscriber');
+        currentSubscriber = null;
+        updateSubscriberUI();
+        alert("Seus dados foram excluídos e apagados permanentemente de nossos servidores.");
+    }
+}
+
+// Inicializar interface do assinante
+updateSubscriberUI();
+
+// 4. Gestão e Mural de Agentes Treinadas
+const adminLoginFormBox = document.getElementById('adminLoginFormBox');
+const adminDashboardBox = document.getElementById('adminDashboardBox');
+const adminAgentsTableBody = document.getElementById('adminAgentsTableBody');
+const publicAgentsMural = document.getElementById('publicAgentsMural');
+
+// Banco de dados simulado de agentes treinadas
+let agentsList = JSON.parse(localStorage.getItem('daiane-agents') || '[]');
+
+if (agentsList.length === 0) {
+    // Seeds iniciais de agentes
+    agentsList = [
+        {
+            id: 'agent-1',
+            name: "Juliana Santos",
+            course: "Formação em Vendas e Perfil DISC",
+            date: "2026-05-15",
+            phone: "(11) 98888-1111",
+            email: "juliana@exemplo.com",
+            photo: "",
+            validated: true,
+            active: true
+        },
+        {
+            id: 'agent-2',
+            name: "Mariana Costa",
+            course: "Imunidade Emocional e Autoimagem",
+            date: "2026-06-01",
+            phone: "(11) 98888-2222",
+            email: "mariana@exemplo.com",
+            photo: "",
+            validated: true,
+            active: true
+        }
+    ];
+    localStorage.setItem('daiane-agents', JSON.stringify(agentsList));
+}
+
+// Lógica de Login Admin
+window.handleAdminLogin = function() {
+    const user = document.getElementById('adminUsername').value.trim();
+    const pass = document.getElementById('adminPassword').value.trim();
+    const loginError = document.getElementById('adminLoginError');
+
+    if (user === 'daiane' && pass === '1234') {
+        if (loginError) loginError.style.display = 'none';
+        localStorage.setItem('daiane-admin-logged', 'true');
+        renderAdminDashboard();
+    } else {
+        if (loginError) loginError.style.display = 'block';
+    }
+}
+
+window.handleAdminLogout = function() {
+    localStorage.removeItem('daiane-admin-logged');
+    renderAdminDashboard();
+}
+
+function renderAdminDashboard() {
+    const isLogged = localStorage.getItem('daiane-admin-logged') === 'true';
+
+    if (isLogged) {
+        if (adminLoginFormBox) adminLoginFormBox.style.display = 'none';
+        if (adminDashboardBox) adminDashboardBox.style.display = 'block';
+        renderAdminAgentsTable();
+    } else {
+        if (adminLoginFormBox) adminLoginFormBox.style.display = 'block';
+        if (adminDashboardBox) adminDashboardBox.style.display = 'none';
+    }
+}
+
+// Renderizar Tabela Admin
+function renderAdminAgentsTable() {
+    if (!adminAgentsTableBody) return;
+    adminAgentsTableBody.innerHTML = '';
+
+    agentsList.forEach(agent => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td><strong>${agent.name}</strong></td>
+            <td>${agent.course}<br><small>Certificação: ${agent.date}</small></td>
+            <td>${agent.phone}<br><small>${agent.email}</small></td>
+            <td>
+                <span class="status-badge ${agent.validated ? 'status-approved' : 'status-pending'}">
+                    ${agent.validated ? 'Validada' : 'Aguardando'}
+                </span>
+                <span class="status-badge ${agent.active ? 'status-approved' : 'status-rejected'}" style="margin-left: 5px;">
+                    ${agent.active ? 'Ativa' : 'Suspensa'}
+                </span>
+            </td>
+            <td>
+                <div class="action-buttons-cell">
+                    <button class="btn-approve" onclick="toggleAgentValidation('${agent.id}')" style="background:#007bff; color:#fff;">
+                        <i class="fa-solid fa-signature"></i> ${agent.validated ? 'Desvalidar' : 'Validar'}
+                    </button>
+                    <button class="btn-approve" onclick="toggleAgentStatus('${agent.id}')">
+                        <i class="fa-solid fa-power-off"></i> ${agent.active ? 'Suspender' : 'Reativar'}
+                    </button>
+                </div>
+            </td>
+        `;
+        adminAgentsTableBody.appendChild(tr);
+    });
+}
+
+// Cadastro de Agente (Daiane)
+window.registerAgent = function() {
+    const name = document.getElementById('agentName').value.trim();
+    const course = document.getElementById('agentCourse').value.trim();
+    const date = document.getElementById('agentDate').value;
+    const phone = document.getElementById('agentPhone').value.trim();
+    const email = document.getElementById('agentEmail').value.trim();
+    const photo = document.getElementById('agentPhoto').value.trim();
+
+    const newAgent = {
+        id: `agent-${Date.now()}`,
+        name,
+        course,
+        date,
+        phone,
+        email,
+        photo,
+        validated: true,
+        active: true
+    };
+
+    agentsList.push(newAgent);
+    localStorage.setItem('daiane-agents', JSON.stringify(agentsList));
+    
+    // Limpar formulário
+    document.getElementById('addAgentForm').reset();
+    
+    renderAdminAgentsTable();
+    renderPublicMural();
+    alert(`Agente ${name} cadastrada e ativada no mural!`);
+}
+
+// Alterar Status da Agente
+window.toggleAgentValidation = function(id) {
+    const agent = agentsList.find(a => a.id === id);
+    if (agent) {
+        agent.validated = !agent.validated;
+        localStorage.setItem('daiane-agents', JSON.stringify(agentsList));
+        renderAdminAgentsTable();
+        renderPublicMural();
+    }
+}
+
+window.toggleAgentStatus = function(id) {
+    const agent = agentsList.find(a => a.id === id);
+    if (agent) {
+        agent.active = !agent.active;
+        localStorage.setItem('daiane-agents', JSON.stringify(agentsList));
+        renderAdminAgentsTable();
+        renderPublicMural();
+    }
+}
+
+// Renderizar Mural Público
+function renderPublicMural() {
+    if (!publicAgentsMural) return;
+    publicAgentsMural.innerHTML = '';
+
+    // Filtrar apenas as agentes válidas e ativas para exibição
+    const displayList = agentsList.filter(a => a.validated && a.active);
+
+    if (displayList.length === 0) {
+        publicAgentsMural.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--color-text-muted);">Nenhuma agente credenciada disponível no momento.</p>`;
+        return;
+    }
+
+    displayList.forEach(agent => {
+        const card = document.createElement('div');
+        card.className = 'agent-mural-card';
+        card.innerHTML = `
+            <div class="agent-card-avatar">
+                ${agent.photo ? `<img src="${agent.photo}" alt="${agent.name}" class="agent-card-avatar">` : agent.name.charAt(0)}
+            </div>
+            <h5>${agent.name}</h5>
+            <span class="agent-card-course">${agent.course}</span>
+            <span class="agent-card-date">Certificada em: ${agent.date}</span>
+            
+            <div class="agent-card-contacts">
+                <a href="https://wa.me/55${agent.phone.replace(/\D/g, '')}" target="_blank" class="agent-contact-link" title="Falar no WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="mailto:${agent.email}" class="agent-contact-link" title="Enviar E-mail">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+            </div>
+        `;
+        publicAgentsMural.appendChild(card);
+    });
+}
+
+// Inicializar os painéis
+renderAdminDashboard();
+renderPublicMural();
+
+

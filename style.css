@@ -2903,3 +2903,575 @@ strong {
         animation: none;
     }
 }
+
+/* ================================================================
+   Skins Visuais (Light e Pink)
+   ================================================================ */
+/* 1. Skin Elegant Light */
+body.skin-light {
+    --color-bg-dark: #F5F4F8;
+    --color-bg-elevated: #EAE8F0;
+    --color-bg-card: #FFFFFF;
+    --color-bg-card-hover: #F2F0F7;
+    --color-text-white: #0A090D;
+    --color-text-gray: #4A4852;
+    --color-text-muted: #7B7885;
+    
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-bg-light: rgba(209, 66, 133, 0.05);
+    --glass-border: 1px solid rgba(209, 66, 133, 0.15);
+    --glass-border-hover: 1px solid rgba(209, 66, 133, 0.4);
+    
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+body.skin-light .header {
+    background: rgba(245, 244, 248, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+body.skin-light .header.scrolled {
+    background: rgba(245, 244, 248, 0.98);
+}
+
+body.skin-light .nav-link:hover,
+body.skin-light .nav-link.active {
+    color: #0A090D;
+}
+
+body.skin-light .about-stats .stat-card {
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.skin-light .feature-card,
+body.skin-light .program-card,
+body.skin-light .testimonial-card,
+body.skin-light .contact-form-container,
+body.skin-light .checkout-modal-content {
+    background: #FFFFFF;
+    border: 1px solid rgba(209, 66, 133, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+body.skin-light .checkout-product-details,
+body.skin-light .checkout-coupon-section,
+body.skin-light .form-group select,
+body.skin-light .checkout-billing-form input {
+    background: #F5F4F8;
+    color: #0A090D;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.skin-light .homologacao-panel {
+    background: #FFFFFF;
+    border-color: rgba(209, 66, 133, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+body.skin-light .homologacao-table td,
+body.skin-light .homologacao-table th {
+    border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+/* 2. Skin MaryKay Pink */
+body.skin-pink {
+    --color-bg-dark: #A22C62;
+    --color-bg-elevated: #8A2050;
+    --color-bg-card: #F2A1C6;
+    --color-bg-card-hover: #F5B5D3;
+    --color-text-white: #FFFFFF;
+    --color-text-gray: #FFE3F0;
+    --color-text-muted: #FFB7D9;
+
+    --color-primary: #FFFFFF;
+    --color-primary-light: #FFE3F0;
+    --color-primary-dark: #D14285;
+    
+    --glass-bg: rgba(138, 32, 80, 0.7);
+    --glass-bg-light: rgba(255, 255, 255, 0.1);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.25);
+    --glass-border-hover: 1px solid rgba(255, 255, 255, 0.5);
+
+    --color-primary-gradient: linear-gradient(135deg, #FFFFFF 0%, #FFE3F0 100%);
+}
+
+body.skin-pink .btn-primary {
+    background: #FFFFFF;
+    color: #A22C62;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+}
+
+body.skin-pink .btn-primary:hover {
+    background: #FFE3F0;
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+body.skin-pink .logo span {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: initial;
+    color: #FFE3F0;
+}
+
+body.skin-pink .text-gradient {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: initial;
+    color: #FFE3F0;
+}
+
+body.skin-pink .feature-card,
+body.skin-pink .program-card,
+body.skin-pink .testimonial-card,
+body.skin-pink .contact-form-container,
+body.skin-pink .checkout-modal-content,
+body.skin-pink .subscriber-form-box,
+body.skin-pink .admin-agents-panel {
+    background: rgba(138, 32, 80, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.skin-pink .checkout-product-details,
+body.skin-pink .checkout-coupon-section,
+body.skin-pink .form-group select,
+body.skin-pink .checkout-billing-form input,
+body.skin-pink .subscriber-form-box input {
+    background: rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.skin-pink .checkout-billing-form input::placeholder,
+body.skin-pink .subscriber-form-box input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+body.skin-pink .homologacao-panel {
+    background: rgba(138, 32, 80, 0.85);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+body.skin-pink .status-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+}
+
+/* Skin selector styles */
+.logo-skin-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.skin-selector {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.25rem;
+    border-radius: 50px;
+    gap: 0.15rem;
+}
+
+.skin-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-text-gray);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.skin-btn:hover {
+    color: var(--color-text-white);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.skin-btn.active {
+    background: var(--color-primary-gradient);
+    color: var(--color-bg-dark);
+}
+
+/* ================================================================
+   Área do Assinante e LGPD
+   ================================================================ */
+.subscriber-section {
+    padding: var(--section-padding);
+    background: linear-gradient(180deg, var(--color-bg-elevated) 0%, var(--color-bg-dark) 100%);
+    border-bottom: 1px solid rgba(242, 161, 198, 0.08);
+}
+
+.subscriber-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.subscriber-benefits-list {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.05rem;
+    color: var(--color-text-gray);
+}
+
+.benefit-item i {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+}
+
+.subscriber-form-box {
+    background: var(--color-bg-card);
+    border: var(--glass-border);
+    padding: 3rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.subscriber-form-box h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.subscriber-form-box input {
+    width: 100%;
+    background: var(--color-bg-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-white);
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+}
+
+.lgpd-checkbox-group {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+}
+
+.lgpd-checkbox-group input {
+    width: auto;
+    margin-top: 0.35rem;
+}
+
+.lgpd-checkbox-group label {
+    font-size: 0.8rem;
+    color: var(--color-text-gray);
+    line-height: 1.5;
+}
+
+.lgpd-checkbox-group a {
+    color: var(--color-primary-light);
+    text-decoration: underline;
+}
+
+.subscriber-welcome-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.sub-avatar-icon {
+    font-size: 2.2rem;
+}
+
+.subscriber-actions-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.lgpd-management-box {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px dashed rgba(255, 255, 255, 0.08);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.lgpd-management-box h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.lgpd-management-box p {
+    font-size: 0.8rem;
+    margin-bottom: 1.25rem;
+}
+
+.btn-danger {
+    border-color: #dc3545 !important;
+    color: #dc3545 !important;
+}
+
+.btn-danger:hover {
+    background: #dc3545 !important;
+    color: #FFFFFF !important;
+}
+
+/* ================================================================
+   Gestão e Mural de Agentes
+   ================================================================ */
+.agents-section {
+    padding: var(--section-padding);
+    background: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-elevated) 100%);
+    border-bottom: 1px solid rgba(242, 161, 198, 0.08);
+}
+
+.admin-agents-panel {
+    background: var(--color-bg-card);
+    border: var(--glass-border);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.admin-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.panel-badge-admin {
+    background: rgba(220, 53, 69, 0.15);
+    color: #dc3545;
+    border: 1px solid rgba(220, 53, 69, 0.2);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+}
+
+.admin-login-box {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.admin-login-inline-form {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.form-group-inline {
+    flex-grow: 1;
+}
+
+.admin-login-inline-form input {
+    width: 100%;
+    background: var(--color-bg-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-white);
+    padding: 0.8rem;
+    border-radius: 8px;
+}
+
+.error-message-inline {
+    display: none;
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.admin-welcome-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.add-agent-form {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+}
+
+.add-agent-form h5 {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+    color: var(--color-primary-light);
+}
+
+.form-grid-admin {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-grid-admin input {
+    width: 100%;
+    background: var(--color-bg-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-white);
+    padding: 0.75rem;
+    border-radius: 6px;
+}
+
+.admin-agents-table-wrapper h5 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary-light);
+}
+
+.admin-agents-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.admin-agents-table th,
+.admin-agents-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-agents-table th {
+    color: var(--color-text-muted);
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Mural de Agentes */
+.agents-mural-wrapper {
+    margin-top: 2rem;
+}
+
+.agents-mural-wrapper h4 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.mural-intro {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.agents-mural-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.agent-mural-card {
+    background: var(--color-bg-card);
+    border: var(--glass-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.agent-mural-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(242, 161, 198, 0.3);
+    box-shadow: var(--shadow-glow);
+}
+
+.agent-card-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--color-bg-dark);
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.agent-mural-card h5 {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+}
+
+.agent-card-course {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-primary-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.agent-card-date {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+}
+
+.agent-card-contacts {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+}
+
+.agent-contact-link {
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--color-text-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    transition: var(--transition-fast);
+}
+
+.agent-contact-link:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    background: rgba(242, 161, 198, 0.05);
+}
+
+@media (max-width: 992px) {
+    .subscriber-container,
+    .form-grid-admin,
+    .agents-mural-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
