@@ -546,4 +546,355 @@ document.addEventListener('DOMContentLoaded', () => {
         barObserver.observe(bar);
     });
 
+    // --- 12. Cursos e Treinamentos Online LMS Lógica ---
+
+    // A. Alternância de abas (Individual vs Corporativo)
+    const courseTabButtons = document.querySelectorAll('.tab-nav-btn');
+    const courseTabPanes = document.querySelectorAll('.tab-pane');
+
+    courseTabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+
+            courseTabButtons.forEach(b => b.classList.remove('active'));
+            courseTabPanes.forEach(pane => pane.classList.remove('active'));
+
+            btn.classList.add('active');
+            const targetPane = document.getElementById(`tab-${tabId}`);
+            if (targetPane) targetPane.classList.add('active');
+        });
+    });
+
+    // B. Simulação de Perfis de Acesso
+    const profileButtons = document.querySelectorAll('.profile-badge-btn');
+    const profilePermissaoMsg = document.getElementById('profilePermissaoMsg');
+
+    const profileRules = {
+        owner: "<strong>Perfil Ativo: Owner.</strong> Acesso total às configurações globais da plataforma, relatórios financeiros e faturamento de vendas corporativas.",
+        admin: "<strong>Perfil Ativo: Admin.</strong> Gestão e moderação de cursos, módulos, quizzes e liberação de acesso manual a alunos.",
+        manager: "<strong>Perfil Ativo: Manager.</strong> Acesso ao painel corporativo, gerenciamento de licenças adquiridas e visualização de notas de funcionários.",
+        leader: "<strong>Perfil Ativo: Leader.</strong> Acesso a relatórios de engajamento do time e trilhas específicas recomendadas para a sua equipe.",
+        user: "<strong>Perfil Ativo: User (Aluno).</strong> Visualização dos cursos matriculados, assistir vídeo-aulas, responder quizzes e baixar certificados."
+    };
+
+    profileButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const profile = btn.getAttribute('data-profile');
+            profileButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (profilePermissaoMsg && profileRules[profile]) {
+                profilePermissaoMsg.style.opacity = '0';
+                setTimeout(() => {
+                    profilePermissaoMsg.innerHTML = profileRules[profile];
+                    profilePermissaoMsg.style.opacity = '1';
+                }, 150);
+            }
+        });
+    });
+
+    // C. Calculadora de Licenças Corporativas
+    const corpCourseSelect = document.getElementById('corpCourseSelect');
+    const corpLicensesCount = document.getElementById('corpLicensesCount');
+    const licensesValueDisplay = document.getElementById('licensesValueDisplay');
+    const licensesDiscountInfo = document.getElementById('licensesDiscountInfo');
+    const unitPriceDisplay = document.getElementById('unitPriceDisplay');
+    const unitPriceDiscountedDisplay = document.getElementById('unitPriceDiscountedDisplay');
+    const corpTotalPriceDisplay = document.getElementById('corpTotalPriceDisplay');
+
+    function calculateCorporatePricing() {
+        if (!corpCourseSelect || !corpLicensesCount) return;
+
+        const basePrice = parseFloat(corpCourseSelect.value);
+        const qty = parseInt(corpLicensesCount.value);
+
+        if (licensesValueDisplay) {
+            licensesValueDisplay.textContent = `${qty} colaboradores`;
+        }
+
+        // Definir percentual de desconto progressivo
+        let discountPercent = 0;
+        if (qty >= 10 && qty < 25) {
+            discountPercent = 0.10; // 10%
+        } else if (qty >= 25 && qty < 50) {
+            discountPercent = 0.15; // 15%
+        } else if (qty >= 50 && qty < 100) {
+            discountPercent = 0.20; // 20%
+        } else if (qty >= 100) {
+            discountPercent = 0.30; // 30%
+        }
+
+        const discountText = discountPercent > 0 ? `Desconto Aplicado: ${(discountPercent * 100)}% de desconto` : 'Sem desconto aplicado (mínimo de 10 licenças para desconto)';
+        if (licensesDiscountInfo) {
+            licensesDiscountInfo.textContent = discountText;
+            licensesDiscountInfo.style.color = discountPercent > 0 ? '#25D366' : 'var(--color-text-muted)';
+        }
+
+        const discountedUnitPrice = basePrice * (1 - discountPercent);
+        const totalPrice = discountedUnitPrice * qty;
+
+        if (unitPriceDisplay) {
+            unitPriceDisplay.textContent = `R$ ${basePrice.toFixed(2).replace('.', ',')}`;
+        }
+        if (unitPriceDiscountedDisplay) {
+            unitPriceDiscountedDisplay.textContent = `R$ ${discountedUnitPrice.toFixed(2).replace('.', ',')}`;
+        }
+        if (corpTotalPriceDisplay) {
+            corpTotalPriceDisplay.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+        }
+    }
+
+    if (corpLicensesCount) {
+        corpLicensesCount.addEventListener('input', calculateCorporatePricing);
+    }
+    if (corpCourseSelect) {
+        corpCourseSelect.addEventListener('change', calculateCorporatePricing);
+    }
+
+    // Inicializar cálculos
+    calculateCorporatePricing();
+
+    // D. Sistema de Aromas (Simulador de indicação e recompensas)
+    const aromasBalance = document.getElementById('aromasBalance');
+    const simulateReferralClickBtn = document.getElementById('simulateReferralClickBtn');
+    const copyReferralLinkBtn = document.getElementById('copyReferralLinkBtn');
+    const referralLinkInput = document.getElementById('referralLinkInput');
+    const copySuccessMsg = document.getElementById('copySuccessMsg');
+    const redeemButtons = document.querySelectorAll('.redeem-reward-btn');
+    const rewardMessageBox = document.getElementById('rewardMessageBox');
+
+    let userAromas = 5; // Saldo inicial simulado
+
+    function updateAromasDisplay() {
+        if (aromasBalance) aromasBalance.textContent = userAromas;
+    }
+
+    if (simulateReferralClickBtn) {
+        simulateReferralClickBtn.addEventListener('click', () => {
+            userAromas += 1;
+            updateAromasDisplay();
+            
+            // Efeito visual temporário
+            const balanceBox = document.querySelector('.aromas-balance-box');
+            if (balanceBox) {
+                balanceBox.style.transform = 'scale(1.1)';
+                setTimeout(() => { balanceBox.style.transform = 'scale(1)'; }, 200);
+            }
+        });
+    }
+
+    if (copyReferralLinkBtn && referralLinkInput && copySuccessMsg) {
+        copyReferralLinkBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(referralLinkInput.value).then(() => {
+                copySuccessMsg.style.display = 'block';
+                setTimeout(() => { copySuccessMsg.style.display = 'none'; }, 3000);
+            });
+        });
+    }
+
+    redeemButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const cost = parseInt(btn.getAttribute('data-cost'));
+            const discount = btn.getAttribute('data-discount');
+
+            if (userAromas >= cost) {
+                userAromas -= cost;
+                updateAromasDisplay();
+
+                // Gerar código de cupom dinâmico
+                const code = `AROMA-${discount === 'free' ? 'FREE' : discount + 'OFF'}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+                if (rewardMessageBox) {
+                    rewardMessageBox.className = 'reward-message-box success';
+                    rewardMessageBox.innerHTML = `<i class="fa-solid fa-circle-check"></i> Resgatado! Use o cupom <strong>${code}</strong> no checkout para obter o desconto.`;
+                }
+            } else {
+                if (rewardMessageBox) {
+                    rewardMessageBox.className = 'reward-message-box error';
+                    rewardMessageBox.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Saldo insuficiente! Você precisa de pelo menos ${cost} Aromas para este resgate.`;
+                }
+            }
+        });
+    });
+
+    // E. Lógica do Checkout Modal
+    const checkoutModal = document.getElementById('checkoutModal');
+    const closeCheckoutBtn = document.getElementById('closeCheckoutBtn');
+    const checkoutItemType = document.getElementById('checkoutItemType');
+    const checkoutItemTitle = document.getElementById('checkoutItemTitle');
+    const checkoutBasePrice = document.getElementById('checkoutBasePrice');
+    const checkoutDiscountRow = document.getElementById('checkoutDiscountRow');
+    const checkoutDiscountValue = document.getElementById('checkoutDiscountValue');
+    const checkoutTotalPrice = document.getElementById('checkoutTotalPrice');
+    const applyCouponBtn = document.getElementById('applyCouponBtn');
+    const checkoutCoupon = document.getElementById('checkoutCoupon');
+    const couponFeedback = document.getElementById('couponFeedback');
+    const billingForm = document.getElementById('checkoutForm');
+    const checkoutSuccessState = document.getElementById('checkoutSuccessState');
+    const checkoutSubmitBtn = document.getElementById('checkoutSubmitBtn');
+
+    let currentItemPrice = 0;
+    let currentDiscount = 0;
+
+    function openCheckoutModal(title, price, type) {
+        if (!checkoutModal) return;
+
+        checkoutItemTitle.textContent = title;
+        currentItemPrice = parseFloat(price);
+        currentDiscount = 0;
+
+        checkoutItemType.textContent = type === 'corporate' ? 'Plano Corporativo (Licenças)' : 'Curso Individual';
+        checkoutBasePrice.textContent = `R$ ${currentItemPrice.toFixed(2).replace('.', ',')}`;
+        
+        if (checkoutDiscountRow) checkoutDiscountRow.style.display = 'none';
+        if (couponFeedback) couponFeedback.textContent = '';
+        if (checkoutCoupon) checkoutCoupon.value = '';
+        
+        updateCheckoutTotal();
+
+        // Restaurar estado do formulário
+        if (billingForm) billingForm.style.display = 'block';
+        if (checkoutSuccessState) checkoutSuccessState.style.display = 'none';
+        if (checkoutSubmitBtn) checkoutSubmitBtn.disabled = false;
+
+        checkoutModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    window.closeCheckoutModal = function() {
+        if (checkoutModal) checkoutModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (closeCheckoutBtn) {
+        closeCheckoutBtn.addEventListener('click', closeCheckoutModal);
+    }
+
+    function updateCheckoutTotal() {
+        const finalPrice = Math.max(0, currentItemPrice - currentDiscount);
+        if (checkoutTotalPrice) {
+            checkoutTotalPrice.textContent = `R$ ${finalPrice.toFixed(2).replace('.', ',')}`;
+        }
+    }
+
+    // Compras individuais via botões de curso
+    const buyIndividualButtons = document.querySelectorAll('.buy-course-btn');
+    buyIndividualButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const title = btn.getAttribute('data-course-title');
+            const price = btn.getAttribute('data-course-price');
+            openCheckoutModal(title, price, 'individual');
+        });
+    });
+
+    // Compra corporativa via botão da calculadora
+    const buyCorporateBtn = document.getElementById('buyCorporateBtn');
+    if (buyCorporateBtn) {
+        buyCorporateBtn.addEventListener('click', () => {
+            const courseOption = corpCourseSelect.options[corpCourseSelect.selectedIndex];
+            const courseTitle = `Plano: ${courseOption.getAttribute('data-title')} (${corpLicensesCount.value} Licenças)`;
+            
+            // Preço total da calculadora corporativa
+            const totalPrice = parseFloat(corpTotalPriceDisplay.textContent.replace('R$ ', '').replace('.', '').replace(',', '.'));
+            openCheckoutModal(courseTitle, totalPrice, 'corporate');
+        });
+    }
+
+    // Validar cupons
+    if (applyCouponBtn) {
+        applyCouponBtn.addEventListener('click', () => {
+            const code = checkoutCoupon.value.trim().toUpperCase();
+
+            if (code === '') {
+                couponFeedback.className = 'coupon-feedback error';
+                couponFeedback.textContent = 'Insira um cupom.';
+                return;
+            }
+
+            // Simular cupons e vales de resgate de Aromas
+            if (code === 'AROMA10' || code.includes('AROMA-30OFF')) {
+                currentDiscount = 30.00;
+                couponFeedback.className = 'coupon-feedback success';
+                couponFeedback.textContent = 'Cupom de R$ 30,00 aplicado com sucesso!';
+            } else if (code.includes('AROMA-50OFF')) {
+                currentDiscount = 50.00;
+                couponFeedback.className = 'coupon-feedback success';
+                couponFeedback.textContent = 'Cupom de R$ 50,00 aplicado com sucesso!';
+            } else if (code.includes('AROMA-FREE') || code === 'DAIANE100') {
+                currentDiscount = currentItemPrice;
+                couponFeedback.className = 'coupon-feedback success';
+                couponFeedback.textContent = 'Curso 100% Gratuito aplicado!';
+            } else {
+                // Cupom padrão de 10%
+                currentDiscount = currentItemPrice * 0.10;
+                couponFeedback.className = 'coupon-feedback success';
+                couponFeedback.textContent = 'Cupom de 10% de desconto aplicado!';
+            }
+
+            if (checkoutDiscountRow) {
+                checkoutDiscountRow.style.display = 'flex';
+                checkoutDiscountValue.textContent = `- R$ ${currentDiscount.toFixed(2).replace('.', ',')}`;
+            }
+
+            updateCheckoutTotal();
+        });
+    }
+
+    // Finalizar Checkout Simulado
+    window.finalizeCheckoutSim = function() {
+        if (checkoutSubmitBtn) {
+            checkoutSubmitBtn.disabled = true;
+            const spanText = checkoutSubmitBtn.querySelector('span');
+            if (spanText) spanText.textContent = 'Processando...';
+
+            setTimeout(() => {
+                if (billingForm) billingForm.style.display = 'none';
+                if (checkoutSuccessState) checkoutSuccessState.style.display = 'block';
+
+                // Se for compra individual bem-sucedida, dar bônus de Aromas
+                userAromas += 5;
+                updateAromasDisplay();
+            }, 1500);
+        }
+    }
 });
+
+// F. Sistema Interativo de Homologação da Cliente Daiane Ribeiro
+const homologacaoStatus = {
+    'venda-individual': false,
+    'venda-corporativa': false,
+    'sistema-aromas': false,
+    'perfis-acesso': false
+};
+
+window.homologarItem = function(itemId, isApproved) {
+    const statusBadge = document.getElementById(`status-${itemId}`);
+    if (!statusBadge) return;
+
+    if (isApproved) {
+        statusBadge.className = 'status-badge status-approved';
+        statusBadge.textContent = 'Aprovado';
+        homologacaoStatus[itemId] = true;
+    } else {
+        statusBadge.className = 'status-badge status-rejected';
+        statusBadge.textContent = 'Reprovado';
+        homologacaoStatus[itemId] = false;
+    }
+
+    // Atualizar progresso de homologação
+    const totalItems = Object.keys(homologacaoStatus).length;
+    const approvedCount = Object.values(homologacaoStatus).filter(val => val === true).length;
+    
+    const progressFill = document.getElementById('homologacaoProgressFill');
+    const approvedCountText = document.getElementById('homologacaoApprovedCount');
+
+    if (progressFill) {
+        const percent = (approvedCount / totalItems) * 100;
+        progressFill.style.width = `${percent}%`;
+    }
+
+    if (approvedCountText) {
+        approvedCountText.textContent = approvedCount;
+    }
+}
+
