@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daiane Riveiro | Palestras Corporativas, DISC & Desenvolvimento Humano</title>
+    <meta name="description" content="Daiane Riveiro — Palestrante e Treinadora Comportamental em Jundiaí (SP). Especialista em perfis DISC, autoimagem corporativa, técnicas de vendas e prevenção de Burnout. Região 011.">
+    <meta name="keywords" content="palestrante corporativa, DISC, autoimagem, autoestima, burnout, vendas, Jundiaí, treinamento comportamental">
+    <meta name="author" content="Daiane Riveiro">
+    <meta property="og:title" content="Daiane Riveiro | Palestras Corporativas & Desenvolvimento Humano">
+    <meta property="og:description" content="Transforme equipes com inteligência comportamental DISC, fortalecimento da autoimagem e estratégias contra Burnout.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="palestrante_foto.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Cursor personalizado -->
+    <div class="custom-cursor" id="customCursor"></div>
+    <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+    <!-- Loader Elegante -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-logo">Daiane<span>Riveiro</span></div>
+            <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- Barra de Navegação -->
+    <header class="header" id="siteHeader">
+        <div class="container nav-container">
+            <a href="#" class="logo" aria-label="Página inicial">
+                Daiane<span>Riveiro</span>
+            </a>
+            <button class="mobile-nav-toggle" aria-label="Abrir menu" aria-expanded="false" id="navToggle">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <nav class="nav-menu" id="navMenu" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="#inicio" class="nav-link active">Início</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#pilares" class="nav-link">Pilares</a></li>
+                    <li><a href="#palestras" class="nav-link">Palestras</a></li>
+                    <li><a href="#disc" class="nav-link">Método DISC</a></li>
+                    <li><a href="#depoimentos" class="nav-link">Resultados</a></li>
+                    <li><a href="#contato" class="btn btn-secondary nav-btn">Contratar</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Barra de progresso de scroll -->
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="hero">
+            <div class="container hero-container">
+                <div class="hero-content" data-reveal="left">
+                    <span class="badge">
+                        <i class="fa-solid fa-diamond"></i>
+                        Palestrante & Treinadora Comportamental
+                    </span>
+                    <h1>Desperte sua <span class="text-gradient">Autoimagem</span> e Domine seu Perfil de <span class="text-gradient">Sucesso</span></h1>
+                    <p class="hero-description">
+                        Capacitações em inteligência comportamental <strong>DISC</strong>, fortalecimento da <strong>autoestima</strong>, estratégias de <strong>vendas</strong> de alta performance e ferramentas práticas no combate ao <strong>burnout</strong>, à <strong>depressão</strong> e à <strong>procrastinação</strong>.
+                    </p>
+                    <div class="hero-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Sediada em Jundiaí - SP | Atendimento Presencial Região 011</span>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#contato" class="btn btn-primary" id="heroCta">
+                            <span>Agendar Palestra</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#palestras" class="btn btn-outline">Conhecer Programas</a>
+                    </div>
+                    <!-- Indicadores de credibilidade -->
+                    <div class="hero-trust">
+                        <div class="trust-item">
+                            <i class="fa-solid fa-building"></i>
+                            <span>+50 empresas atendidas</span>
+                        </div>
+                        <div class="trust-divider"></div>
+                        <div class="trust-item">
+                            <i class="fa-solid fa-star"></i>
+                            <span>98% de satisfação</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image-container" data-reveal="right">
+                    <div class="image-wrapper">
+                        <img src="palestrante_foto.png" alt="Daiane Riveiro - Palestrante Profissional e Treinadora Comportamental" class="hero-img" width="500" height="500">
+                        <div class="image-glow"></div>
+                        <div class="floating-badge badge-top">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                            <span>Autoestima & Saúde Mental</span>
+                        </div>
+                        <div class="floating-badge badge-bottom">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <span>Vendas & Performance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Formas de fundo decorativas -->
+            <div class="hero-bg-shapes" aria-hidden="true">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            <!-- Partículas flutuantes -->
+            <canvas id="heroParticles" class="hero-particles" aria-hidden="true"></canvas>
+            <!-- Indicador de scroll -->
+            <div class="scroll-indicator" aria-hidden="true">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span>Role para descobrir</span>
+            </div>
+        </section>
+
+        <!-- Barra de Marcas / Social Proof -->
+        <section class="trust-bar" aria-label="Áreas de atuação">
+            <div class="trust-bar-inner">
+                <div class="trust-marquee">
+                    <span>✦ Perfis Comportamentais DISC</span>
+                    <span>✦ Autoestima Corporativa</span>
+                    <span>✦ Técnicas de Vendas</span>
+                    <span>✦ Combate ao Burnout</span>
+                    <span>✦ Liderança Feminina</span>
+                    <span>✦ Inteligência Emocional</span>
+                    <span>✦ Prevenção da Procrastinação</span>
+                    <span>✦ Desenvolvimento Humano</span>
+                    <span>✦ Perfis Comportamentais DISC</span>
+                    <span>✦ Autoestima Corporativa</span>
+                    <span>✦ Técnicas de Vendas</span>
+                    <span>✦ Combate ao Burnout</span>
+                    <span>✦ Liderança Feminina</span>
+                    <span>✦ Inteligência Emocional</span>
+                    <span>✦ Prevenção da Procrastinação</span>
+                    <span>✦ Desenvolvimento Humano</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Sobre Daiane Riveiro -->
+        <section id="sobre" class="about">
+            <div class="container about-container">
+                <div class="about-info" data-reveal="left">
+                    <span class="section-subtitle">Quem é Daiane Riveiro</span>
+                    <h2>Transformação Humana Guiada por <span class="text-gradient">Propósito</span> e Ciência</h2>
+                    <p>
+                        Daiane Riveiro é treinadora comportamental e palestrante reconhecida pelo impacto de sua metodologia no desenvolvimento da autoimagem e inteligência emocional. Sediada em <strong>Jundiaí (SP)</strong>, ela atua fortemente na <strong>região de DDD 011</strong>, trazendo soluções personalizadas para empresas que buscam impulsionar resultados comerciais e reestruturar a saúde mental de suas equipes.
+                    </p>
+                    <p>
+                        Acreditando que a <strong>autoestima</strong> é a verdadeira imunidade mental das organizações, Daiane utiliza a metodologia <strong>DISC</strong> e técnicas avançadas de psicologia comportamental para capacitar equipes de vendas a se conectarem melhor com clientes, enquanto ensina indivíduos a superarem a autosabotagem, vencerem a procrastinação crônica e prevenirem o esgotamento (burnout).
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-card" data-reveal="up">
+                            <h3 class="stat-number" data-target="98">0</h3>
+                            <p class="stat-label">De Satisfação Corporativa</p>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="--fill-width: 98%"></div></div>
+                        </div>
+                        <div class="stat-card" data-reveal="up">
+                            <h3 class="stat-number" data-target="1500">0</h3>
+                            <p class="stat-label">Profissionais Impactados</p>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="--fill-width: 85%"></div></div>
+                        </div>
+                        <div class="stat-card" data-reveal="up">
+                            <h3 class="stat-number" data-target="50">0</h3>
+                            <p class="stat-label">Empresas Atendidas</p>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="--fill-width: 72%"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-highlights" data-reveal="right">
+                    <div class="highlight-box">
+                        <div class="highlight-icon"><i class="fa-solid fa-gem"></i></div>
+                        <h4>Branding Inspirado no Empoderamento</h4>
+                        <p>Alinhada com valores de beleza, confiança e transformação pessoal — espelhando o cuidado e a excelência que fortalecem a autoimagem corporativa.</p>
+                        <div class="highlight-glow"></div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h4>Escudo contra a Crise Silenciosa</h4>
+                        <p>Combate preventivo da procrastinação e do burnout por meio de técnicas cientificamente estruturadas de reabilitação da autoestima.</p>
+                        <div class="highlight-glow"></div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-icon"><i class="fa-solid fa-rocket"></i></div>
+                        <h4>Aceleração Comportamental de Vendas</h4>
+                        <p>A aplicação prática do DISC na jornada de compra do cliente transforma a arte de vender em ciência com resultados mensuráveis.</p>
+                        <div class="highlight-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pilares de Transformação -->
+        <section id="pilares" class="features">
+            <div class="container">
+                <div class="section-header" data-reveal="up">
+                    <span class="section-subtitle">Nossa Abordagem</span>
+                    <h2>Os 4 Pilares do <span class="text-gradient">Desenvolvimento Integrado</span></h2>
+                    <p>A sinergia perfeita entre autoconhecimento comportamental, cura interior e aceleração de resultados comerciais.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card" data-reveal="up" data-delay="0">
+                        <div class="feature-number">01</div>
+                        <div class="feature-icon"><i class="fa-solid fa-user-tie"></i></div>
+                        <h3>Fortalecimento de Autoimagem</h3>
+                        <p>Como você se enxerga determina o seu teto de conquistas. Trabalhamos a reabilitação da autoimagem para desbloquear a autoconfiança de líderes e vendedores.</p>
+                        <div class="feature-card-glow"></div>
+                    </div>
+                    <div class="feature-card" data-reveal="up" data-delay="100">
+                        <div class="feature-number">02</div>
+                        <div class="feature-icon"><i class="fa-solid fa-users-gear"></i></div>
+                        <h3>Análise Comportamental DISC</h3>
+                        <p>Decodifique o comportamento humano. Aprenda a reconhecer perfis (Dominante, Influente, Estável, Conforme) para liderar e vender com maior assertividade.</p>
+                        <div class="feature-card-glow"></div>
+                    </div>
+                    <div class="feature-card" data-reveal="up" data-delay="200">
+                        <div class="feature-number">03</div>
+                        <div class="feature-icon"><i class="fa-solid fa-brain"></i></div>
+                        <h3>Imunidade Mental</h3>
+                        <p>Táticas práticas para blindar a mente contra a depressão corporativa, vencer o esgotamento físico/mental do Burnout e exterminar de vez a procrastinação.</p>
+                        <div class="feature-card-glow"></div>
+                    </div>
+                    <div class="feature-card" data-reveal="up" data-delay="300">
+                        <div class="feature-number">04</div>
+                        <div class="feature-icon"><i class="fa-solid fa-wallet"></i></div>
+                        <h3>Vendas Comportamentais</h3>
+                        <p>O alinhamento do DISC e da autoestima aplicados em fechamentos comerciais de alto padrão. Quem se conhece melhor, vende mais e gera relacionamentos duradouros.</p>
+                        <div class="feature-card-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfólio de Palestras -->
+        <section id="palestras" class="programs">
+            <div class="container">
+                <div class="section-header" data-reveal="up">
+                    <span class="section-subtitle">Palestras & Workshops</span>
+                    <h2>Capacitações <span class="text-gradient">Sob Medida</span> para sua Empresa</h2>
+                    <p>Formatos dinâmicos, interativos e focados na realidade organizacional atual.</p>
+                </div>
+                <div class="programs-grid">
+                    <!-- Palestra 1 -->
+                    <div class="program-card" data-reveal="up" data-delay="0">
+                        <div class="program-ribbon">Mais Solicitado</div>
+                        <div class="program-content">
+                            <div class="program-icon"><i class="fa-solid fa-crown"></i></div>
+                            <span class="program-tag">Liderança & Resiliência</span>
+                            <h3>O Espelho da Liderança: Autoimagem e Resiliência</h3>
+                            <p>Uma reflexão profunda sobre o impacto da autoimagem na gestão de equipes e nos negócios, abordando ferramentas práticas para evitar o Burnout e reabilitar a energia pessoal.</p>
+                            <ul class="program-benefits">
+                                <li><i class="fa-solid fa-check-circle"></i> Redução de estresse corporativo</li>
+                                <li><i class="fa-solid fa-check-circle"></i> Técnicas de autoimagem positiva</li>
+                                <li><i class="fa-solid fa-check-circle"></i> Autoliderança consistente</li>
+                            </ul>
+                            <a href="#contato" class="btn btn-primary btn-full">Solicitar Orçamento <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Palestra 2 -->
+                    <div class="program-card featured" data-reveal="up" data-delay="150">
+                        <div class="program-ribbon">Vendas & DISC</div>
+                        <div class="program-content">
+                            <div class="program-icon"><i class="fa-solid fa-bullseye"></i></div>
+                            <span class="program-tag">Vendas & Liderança</span>
+                            <h3>Venda Inteligente: Decodificando Clientes com DISC</h3>
+                            <p>Entenda o perfil de cada cliente em segundos. Uma capacitação focada na aplicação prática do modelo DISC para negociação, aumento de ticket médio e relacionamentos comerciais.</p>
+                            <ul class="program-benefits">
+                                <li><i class="fa-solid fa-check-circle"></i> Identificação ágil de perfis de compradores</li>
+                                <li><i class="fa-solid fa-check-circle"></i> Adaptação de discurso comercial</li>
+                                <li><i class="fa-solid fa-check-circle"></i> Técnicas de fechamento assertivo</li>
+                            </ul>
+                            <a href="#contato" class="btn btn-primary btn-full">Solicitar Orçamento <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Palestra 3 -->
+                    <div class="program-card" data-reveal="up" data-delay="300">
+                        <div class="program-ribbon">Saúde Mental</div>
+                        <div class="program-content">
+                            <div class="program-icon"><i class="fa-solid fa-spa"></i></div>
+                            <span class="program-tag">Saúde Mental & Foco</span>
+                            <h3>Vencendo a Procrastinação e Resgatando a Autoestima</h3>
+                            <p>Capacitação voltada para a superação da estagnação operacional. Métodos eficientes para vencer ciclos de procrastinação, resgatando a autoestima individual como motor da produtividade saudável.</p>
+                            <ul class="program-benefits">
+                                <li><i class="fa-solid fa-check-circle"></i> Gestão de micro-metas diárias</li>
+                                <li><i class="fa-solid fa-check-circle"></i> Identificação dos gatilhos de procrastinação</li>
+                                <li><i class="fa-solid fa-check-circle"></i> Fortalecimento do valor pessoal</li>
+                            </ul>
+                            <a href="#contato" class="btn btn-primary btn-full">Solicitar Orçamento <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção sobre Perfil DISC Interativa -->
+        <section id="disc" class="disc-section">
+            <div class="container disc-container">
+                <div class="disc-info" data-reveal="left">
+                    <span class="section-subtitle">Metodologia Exclusiva</span>
+                    <h2>A Magia do <span class="text-gradient">DISC</span> para a Alta Performance</h2>
+                    <p>
+                        A metodologia DISC divide os perfis comportamentais em quatro quadrantes. Compreender onde você e sua equipe se enquadram é a chave para otimizar vendas e eliminar conflitos.
+                    </p>
+                    <div class="disc-selector">
+                        <button class="disc-btn active" data-disc="d" aria-label="Perfil Dominância">
+                            <strong>D</strong>ominância
+                        </button>
+                        <button class="disc-btn" data-disc="i" aria-label="Perfil Influência">
+                            <strong>I</strong>nfluência
+                        </button>
+                        <button class="disc-btn" data-disc="s" aria-label="Perfil Estabilidade">
+                            <strong>E</strong>stabilidade
+                        </button>
+                        <button class="disc-btn" data-disc="c" aria-label="Perfil Conformidade">
+                            <strong>C</strong>onformidade
+                        </button>
+                    </div>
+                    <div class="disc-content-box" id="discContent">
+                        <div class="disc-profile-icon" id="discIcon"><i class="fa-solid fa-bolt"></i></div>
+                        <h4 id="discTitle">Dominância (Resultados e Ação)</h4>
+                        <p id="discText">Pessoas com perfil Dominante são focadas em resultados, competitivas e motivadas por desafios. Em vendas, são diretas e decididas. Sob estresse, tendem a ficar impacientes. Compreender o perfil D ajuda a acelerar negociações objetivas.</p>
+                        <div class="disc-tips">
+                            <h5><i class="fa-solid fa-lightbulb"></i> Dica para lidar:</h5>
+                            <p id="discTip">Seja objetivo, vá direto ao ponto, foque em números, resultados e dê autonomia de escolha.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="disc-visual" data-reveal="right">
+                    <div class="disc-matrix">
+                        <div class="matrix-quad quad-d active" data-disc="d">
+                            <span class="quad-letter">D</span>
+                            <span class="quad-label">Dominância</span>
+                        </div>
+                        <div class="matrix-quad quad-i" data-disc="i">
+                            <span class="quad-letter">I</span>
+                            <span class="quad-label">Influência</span>
+                        </div>
+                        <div class="matrix-quad quad-s" data-disc="s">
+                            <span class="quad-letter">E</span>
+                            <span class="quad-label">Estabilidade</span>
+                        </div>
+                        <div class="matrix-quad quad-c" data-disc="c">
+                            <span class="quad-letter">C</span>
+                            <span class="quad-label">Conformidade</span>
+                        </div>
+                        <div class="matrix-center-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos / Social Proof -->
+        <section id="depoimentos" class="testimonials">
+            <div class="container">
+                <div class="section-header" data-reveal="up">
+                    <span class="section-subtitle">Resultados Reais</span>
+                    <h2>O que dizem os <span class="text-gradient">Líderes Transformados</span></h2>
+                    <p>Depoimentos de profissionais que experimentaram a transformação na prática.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card" data-reveal="up" data-delay="0">
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <blockquote>
+                            "A palestra da Daiane mudou a mentalidade da nossa equipe de vendas. Em 3 meses, nosso ticket médio cresceu 40%. A aplicação do DISC nas abordagens comerciais é transformadora."
+                        </blockquote>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                            <div>
+                                <strong>Ricardo Mendes</strong>
+                                <span>Diretor Comercial — Tech Solutions SP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" data-reveal="up" data-delay="150">
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <blockquote>
+                            "Depois do treinamento sobre autoimagem e combate ao burnout, nossa taxa de turnover caiu pela metade. A equipe está mais motivada, mais saudável e mais produtiva."
+                        </blockquote>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                            <div>
+                                <strong>Camila Ferreira</strong>
+                                <span>Gerente de RH — Grupo Vitta Jundiaí</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" data-reveal="up" data-delay="300">
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <blockquote>
+                            "Eu vivia procrastinando e me autossabotando. A metodologia da Daiane me ajudou a entender meu perfil comportamental e resgatar minha autoestima profissional. Hoje lidero com clareza."
+                        </blockquote>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                            <div>
+                                <strong>Patrícia Almeida</strong>
+                                <span>Supervisora de Equipe — Indústria Campinas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulário de Contato e Agendamento -->
+        <section id="contato" class="contact">
+            <div class="container contact-container">
+                <div class="contact-info" data-reveal="left">
+                    <span class="section-subtitle">Agenda & Contratações</span>
+                    <h2>Leve Daiane Riveiro para sua <span class="text-gradient">Empresa</span></h2>
+                    <p>Agende palestras, treinamentos in-company e mentorias de alto impacto presencial em Jundiaí, Grande São Paulo, Campinas e região 011.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <h4>Telefone / WhatsApp</h4>
+                                <p>(11) 98888-7777</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <h4>E-mail</h4>
+                                <p>contato@daianeriveiro.com.br</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <h4>Localização Central</h4>
+                                <p>Jundiaí - SP (Região 011)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA WhatsApp -->
+                    <a href="https://wa.me/5511988887777?text=Ol%C3%A1%20Daiane!%20Gostaria%20de%20saber%20mais%20sobre%20suas%20palestras." class="btn btn-whatsapp" target="_blank" rel="noopener" id="whatsappCta">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>Falar Direto no WhatsApp</span>
+                    </a>
+                </div>
+
+                <div class="contact-form-container" data-reveal="right">
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <h3>Solicitar Disponibilidade de Data</h3>
+                        <p>Preencha os campos abaixo e entraremos em contato em até 24 horas.</p>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Seu Nome *</label>
+                                <input type="text" id="name" name="name" required placeholder="Digite seu nome completo" autocomplete="name">
+                                <span class="error-message" id="nameError">Nome é obrigatório.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Empresa</label>
+                                <input type="text" id="company" name="company" placeholder="Nome da empresa" autocomplete="organization">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-mail Corporativo *</label>
+                                <input type="email" id="email" name="email" required placeholder="exemplo@empresa.com" autocomplete="email">
+                                <span class="error-message" id="emailError">E-mail corporativo válido é obrigatório.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone / WhatsApp *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="(11) 99999-9999" autocomplete="tel">
+                                <span class="error-message" id="phoneError">Telefone válido é obrigatório.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Programa Desejado *</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Selecione um programa...</option>
+                                <option value="lideranca-autoimagem">Palestra: O Espelho da Liderança</option>
+                                <option value="vendas-disc">Palestra/Treinamento: Venda Inteligente com DISC</option>
+                                <option value="procrastinacao-autoestima">Palestra: Vencendo a Procrastinação</option>
+                                <option value="mentoria-individual">Mentoria Executiva Individual</option>
+                                <option value="treinamento-completo">Programa Completo (Todas as Palestras)</option>
+                            </select>
+                            <span class="error-message" id="serviceError">Selecione uma das opções.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensagem / Detalhes do Evento</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Conte-nos sobre a data planejada, público-alvo e objetivos do evento..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                            <span>Enviar Solicitação</span>
+                            <div class="btn-loader" aria-hidden="true"></div>
+                        </button>
+                    </form>
+                    <div id="formSuccess" class="form-success-alert">
+                        <div class="success-icon-wrapper">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <h4>Solicitação Enviada com Sucesso!</h4>
+                        <p>Obrigado pelo contato. Em breve entraremos em contato para confirmar detalhes.</p>
+                        <a href="#inicio" class="btn btn-outline">Voltar ao Topo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo footer-logo" aria-label="Página inicial">
+                    Daiane<span>Riveiro</span>
+                </a>
+                <p>Palestras e Capacitação em Perfis Comportamentais (DISC), Autoimagem, Autoestima e Inteligência Emocional Corporativa.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre Daiane</a></li>
+                    <li><a href="#pilares">Nossos Pilares</a></li>
+                    <li><a href="#palestras">Palestras</a></li>
+                    <li><a href="#disc">Método DISC</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Palestras</h4>
+                <ul>
+                    <li><a href="#palestras">O Espelho da Liderança</a></li>
+                    <li><a href="#palestras">Venda Inteligente DISC</a></li>
+                    <li><a href="#palestras">Vencendo a Procrastinação</a></li>
+                    <li><a href="#palestras">Mentoria Executiva</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contato</h4>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Jundiaí - SP (Região 011)</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>(11) 98888-7777</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>contato@daianeriveiro.com.br</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Daiane Riveiro. Todos os direitos reservados. Sediada em Jundiaí - SP.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+</body>
+</html>
